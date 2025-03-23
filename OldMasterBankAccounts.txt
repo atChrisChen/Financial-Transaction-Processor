@@ -1,0 +1,10 @@
+00001 John Doe            A 01000.50 0010
+00002 Jane Smith          A 09999.99 0025
+00003 John Poor           A 00000.50 0001
+00004 Rich Guy            A 99999.99 0500
+00005 Negative Balance    A -0001.00 0003
+00006 High Transactions   A 05000.00 9999
+00007 Disabled Account    D 02000.00 0000
+00008 Short Name          A 00050.75 0002
+00009 Long NameExceeding  A 10000.00 0050
+00010 EdgeCase ZeroTrans  A 00200.00 0000
