@@ -1,5 +1,5 @@
-from starter_code.Transaction import Transaction
-from starter_code.BankAccount import BankAccount
+from starter_code.transaction import Transaction
+from starter_code.bank_account import BankAccount
 
 class TransactionManager:
     """
