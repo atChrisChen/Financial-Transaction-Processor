@@ -1,5 +1,5 @@
 from starter_code.Transaction import Transaction
-
+from starter_code.BankAccount import BankAccount
 
 class TransactionManager:
     """
@@ -18,7 +18,45 @@ class TransactionManager:
         Returns:
             bool: True if the transaction was processed successfully, False otherwise.
         """
+        for acc in bank_accounts:
+            if acc.account_number == transaction.account_number:
+                account = acc
+                break
+        else:
+            print(f"Account {transaction.account_number} not found.")
+            return False
+        
+        if transaction.transaction_code == "00": 
+            print("End of session.")
+            return True
+        elif transaction.transaction_code == "01":  
+            return self.withdraw(account, transaction.amount)
+        elif transaction.transaction_code == "03":  
+            return self.paybill(account, transaction.amount)
+        elif transaction.transaction_code == "04":  
+            return self.deposit(account, transaction.amount)
+        elif transaction.transaction_code == "05": 
+            return self.create(transaction, bank_accounts)
+        elif transaction.transaction_code == "06": 
+            return self.delete(account, bank_accounts)
+        elif transaction.transaction_code == "07": 
+            return self.disable(account)
+        elif transaction.transaction_code == "08": 
+            return self.changePlan(account)
+        else:
+            print(f"Unknown transaction code: {transaction.transaction_code}")
+            return False
+
+    ### maybe handle each transaction as separate functions here
+    def withdraw(self, account, amount):
         pass
+    def transfer(self, sourceAccount, destinationAccount, amount, bankAccounts):
+        pass
+    def paybill(self, account, amount):
+        pass
+    def deposit(self, account, amount):
+        pass
+
 
     def process_all_transactions(self, transactions: list[Transaction], bank_accounts: list) -> None:
         """
