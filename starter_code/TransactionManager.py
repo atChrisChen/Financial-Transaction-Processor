@@ -1,3 +1,6 @@
+from starter_code.Transaction import Transaction
+
+
 class TransactionManager:
     """
     Service class that handles transaction processing by interacting with bank accounts
@@ -25,4 +28,6 @@ class TransactionManager:
             transactions (list[Transaction]): A list of transactions to process.
             bank_accounts (list): A list of BankAccount objects representing the current accounts.
         """
-        pass
+        for transaction in transactions:
+            if not self.process_transaction(transaction, bank_accounts):
+                print(f"Transaction failed: {transaction.transaction_code} for account {transaction.account_number}.")
