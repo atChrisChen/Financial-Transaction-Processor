@@ -1,4 +1,4 @@
-from starter_code.Transaction import Transaction
+from starter_code.transaction import Transaction
 
 def read_transactions(file_path):
     """

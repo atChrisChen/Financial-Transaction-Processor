@@ -1,7 +1,7 @@
-from starter_code.BankAccountReader import read_old_bank_accounts
-from starter_code.Transaction import Transaction
-from starter_code.TransactionManager import TransactionManager
-from starter_code.TransactionReader import read_transactions
+from starter_code.bank_account_reader import read_old_bank_accounts
+from starter_code.transaction import Transaction
+from starter_code.transaction_manager import TransactionManager
+from starter_code.transaction_reader import read_transactions
 
 def main(): 
     # Load Bank Accounts. Returns a list of accounts holding: (account number, account holder, status, current balance and # of transactions)
