@@ -23,6 +23,7 @@ def read_transactions(file_path):
                 print(f"  Amount: {amount}")
                 print(f"  Misc Data: {misc_data}")
 
+                # Creates a Transaction object and appends it to list of transactions. 
                 transaction = Transaction(transaction_code, account_holder, account_number, amount, misc_data)
                 transactions.append(transaction)
 
