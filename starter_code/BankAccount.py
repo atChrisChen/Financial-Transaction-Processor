@@ -12,14 +12,22 @@ class BankAccount:
         self.transaction_count = transaction_count
         self.plan = plan
 
-    def apply_transaction(self):
+    def apply_transaction(self, amount: float):
         # Applies a transaction to the account (To be implemented).
-        pass
+        self.balance += amount
+        self.transaction_count += 1
+        self.apply_fee()
 
     def can_withdraw(self, amount: float) -> bool:
         # Checks if withdrawal is allowed based on account balance (To be implemented).
-        pass
+        if self.status == 'D':
+            return False
+        return self.balance >= amount
 
     def apply_fee(self):
         # Applies a transaction fee based on account type (To be implemented).
-        pass
+        if self.plan == 'S':
+            fee = 0.05
+        else:
+            fee = 0.10
+        self.balance -= fee
