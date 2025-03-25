@@ -6,7 +6,7 @@ class TransactionManager:
     Service class that handles transaction processing by interacting with bank accounts.
     """
 
-    def process_transaction(self, transaction: Transaction, bank_accounts: list) -> bool:
+    def process_transaction(self, transaction: Transaction, bank_accounts: list[BankAccount]) -> bool:
         """
         Processes a single transaction on a dict-based account system.
         """
@@ -15,18 +15,15 @@ class TransactionManager:
 
         # Search for the account
         for acc in bank_accounts:
-            print(f"\nThe current account number: {acc['account_number']} and the transaction account number: {transaction_acc_number}")
+            print(f"\nThe current account number: {acc.account_number} and the transaction account number: {transaction_acc_number}")
             # Account found.
-            if acc['account_number'] == transaction_acc_number:
+            if acc.account_number == transaction_acc_number:
                 account = acc
                 break
         # No account found.
         if account is None:
-            print(f"Account {transaction.account_number} not found.")
+            print(f"Account {transaction.account_number} was not found.")
             return False
-
-        # print(f"The transaction code is: {transaction.transaction_code}")
-
 
         # Process transaction based on transaction code.
         if transaction.transaction_code == "00":
@@ -43,36 +40,36 @@ class TransactionManager:
             return False
 
 
-    def withdraw(self, account: dict, amount: float) -> bool:
+    def withdraw(self, account: BankAccount, amount: float) -> bool:
         print("Withdraw function")
-        if account['status'] == 'A' and account['balance'] >= amount:
-            account['balance'] -= amount
-            account['total_transactions'] += 1
+        if account.status == 'A' and account.balance >= amount:
+            account.balance -= amount
+            account.transaction_count += 1
             print("Withdrawal success.")
             return True
         else:
             print("Withdrawal fail.")
             return False
         
-    def paybill(self, account: dict, amount: float) -> bool:
-        if account['status'] == 'A' and account['balance'] >= amount:
-            account['balance'] -= amount
-            account['total_transactions'] += 1
+    def paybill(self, account: BankAccount, amount: float) -> bool:
+        if account.status == 'A' and account.balance >= amount:
+            account.balance -= amount
+            account.transaction_count += 1
             print("Paybill successful.")
             return True
         print("Paybill failed.")
         return False
     
-    def deposit(self, account: dict, amount: float) -> bool:
-        if account['status'] == 'A':
-            account['balance'] += amount
-            account['total_transactions'] += 1
+    def deposit(self, account: BankAccount, amount: float) -> bool:
+        if account.status == 'A':
+            account.balance += amount
+            account.transaction_count += 1
             print("Deposit successful.")
             return True
         print("Deposit failed.")
         return False
 
-    def process_all_transactions(self, transactions: list[Transaction], bank_accounts: list) -> None:
+    def process_all_transactions(self, transactions: list[Transaction], bank_accounts: list[BankAccount]) -> None:
         """
         Processes a batch of transactions sequentially. Applies each transaction to the relevant bank account.
 

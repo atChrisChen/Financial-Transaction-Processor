@@ -31,11 +31,11 @@ def main():
     # Read transactions. Returns a list of transactions holding: (transaction code, account holder, account number, amount and misc)
     transactions = read_transactions("MergedBankAccountTransaction.txt")
     
-    tm.process_all_transactions(transactions, accounts_dict)
+    tm.process_all_transactions(transactions, accounts)
     
     print("\nAccounts after transaction:")
-    for account in accounts_dict:
-        print(account)
+    for acc in accounts:
+        print(acc)
 
 if __name__ == "__main__": 
     main()
