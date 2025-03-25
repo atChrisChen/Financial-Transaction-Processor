@@ -1,5 +1,4 @@
 from starter_code.bank_account_reader import read_old_bank_accounts
-from starter_code.transaction import Transaction
 from starter_code.transaction_manager import TransactionManager
 from starter_code.transaction_reader import read_transactions
 
