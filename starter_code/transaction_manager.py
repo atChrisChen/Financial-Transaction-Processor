@@ -1,5 +1,7 @@
 from starter_code.transaction import Transaction
 from starter_code.bank_account import BankAccount
+from starter_code.bank_account_writer import write_new_current_accounts
+from starter_code.bank_account_reader import read_old_bank_accounts
 
 class TransactionManager:
     """
@@ -68,6 +70,47 @@ class TransactionManager:
             return True
         print("Deposit failed.")
         return False
+    
+    def create(self, account: BankAccount):
+        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        current_accounts.append(account)
+        write_new_current_accounts(current_accounts)
+        print("Account creation successful")
+        account.transaction_count += 1
+
+    def delete(self, account_to_delete: BankAccount) -> bool:
+        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        for index, account in enumerate(current_accounts):
+            if (account.account_number == account_to_delete.account_number and
+                account.holder_name == account_to_delete.holder_name):
+                del current_accounts[index]
+                print("Account deletion successful")
+                write_new_current_accounts(current_accounts)
+                return True
+        print("Bank account not found")
+        return False
+
+    def disable(self, account_to_disable: BankAccount) -> bool:
+        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        for index, account in enumerate(current_accounts):
+            if (account.account_number == account_to_disable.account_number and
+                account.holder_name == account_to_disable.holder_name):
+                current_accounts[index].status = "D"
+                print("Account disabling successful")
+                write_new_current_accounts(current_accounts)
+                return True
+        print("Bank account not found")
+        return False
+
+    def changePlan(self, account: BankAccount, plan: str) -> bool:
+        if account.status == 'A':
+            account.plan = str
+            account.transaction_count += 1
+            print("Plan change successful.")
+            return True
+        print("Plan change failed.")
+        return False
+
 
     def process_all_transactions(self, transactions: list[Transaction], bank_accounts: list[BankAccount]) -> None:
         """
