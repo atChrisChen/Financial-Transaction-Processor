@@ -1,15 +1,30 @@
 from starter_code.bank_account_reader import read_old_bank_accounts
 from starter_code.transaction_manager import TransactionManager
 from starter_code.transaction_reader import read_transactions
+from starter_code.bank_account import BankAccount
 
 def main(): 
     # Load Bank Accounts. Returns a list of accounts holding: (account number, account holder, status, current balance and # of transactions)
     accounts_dict = read_old_bank_accounts("OldMasterBankAccounts.txt")
-    #Note: currently the bank account class is not being used as an object within the accounts_dict list
+    # Apparantly should not change the bank_account_reader starter code. 
+    # Utilizing the bank account class here
+    accounts = []
+    for acc in accounts_dict: 
+        
+        print("the type for balance is: " , type(acc["balance"]))
+        bank_account = BankAccount(
+            account_number = acc["account_number"], 
+            holder_name = acc["name"], 
+            status = acc["status"], 
+            balance = acc["balance"], 
+            transaction_count = acc["total_transactions"], 
+            plan = "S", # Files need to be updated to include a plan in them. For now will default to student
+        )
+        accounts.append(bank_account)
     
     print("\nAccounts loaded: ")
-    for account in accounts_dict:
-        print(account)
+    for acc in accounts:
+        print(acc)
 
     tm = TransactionManager()
 

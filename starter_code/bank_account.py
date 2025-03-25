@@ -38,3 +38,14 @@ class BankAccount:
         else:
             fee = 0.10
         self.balance -= fee
+        
+    def __str__(self) -> str:
+        return (
+            f"acount number: {self.account_number}\n"
+            f"holder name: {self.holder_name}\n"
+            f"status: {self.status}\n"
+            f"balance: {self.balance}\n"
+            f"amount of transactions: {self.transaction_count}\n"
+            f"plan type: {self.plan}\n"
+        )
+    

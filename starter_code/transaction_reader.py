@@ -15,7 +15,7 @@ def read_transactions(file_path):
                 account_number = clean_line[24:29].strip() 
                 amount = float(clean_line[29:37].strip())  
                 misc_data = clean_line[37:].strip()
-
+                                
                 print(f"Line {line_num}:")
                 print(f"  Transaction Code: {transaction_code}")
                 print(f"  Account Holder: {account_holder}")
