@@ -37,6 +37,14 @@ class TransactionManager:
             return self.paybill(account, transaction.amount)
         elif transaction.transaction_code == "04":
             return self.deposit(account, transaction.amount)
+        elif transaction.transaction_code == "05":
+            return self.create(account)
+        elif transaction.transaction_code == "06":
+            return self.delete(account)
+        elif transaction.transaction_code == "07":
+            return self.disable(account)
+        elif transaction.transaction_code == "08":
+            return self.changePlan(account)
         else:
             print(f"Unknown transaction code: {transaction.transaction_code}")
             return False
@@ -102,9 +110,12 @@ class TransactionManager:
         print("Bank account not found")
         return False
 
-    def changePlan(self, account: BankAccount, plan: str) -> bool:
+    def changePlan(self, account: BankAccount) -> bool:
         if account.status == 'A':
-            account.plan = str
+            if account.plan == "SP":
+                account.plan = "NP"
+            elif account.plan == "NP":
+                account.plan = "SP"
             account.transaction_count += 1
             print("Plan change successful.")
             return True

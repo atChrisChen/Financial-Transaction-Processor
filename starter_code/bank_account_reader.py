@@ -10,7 +10,7 @@ def read_old_bank_accounts(file_path):
             clean_line = line.rstrip('\n')
             
             # Validate line length
-            if len(clean_line) != 42:
+            if len(clean_line) != 45:
                 print(f"ERROR: Fatal error - Line {line_num}: Invalid length ({len(clean_line)} chars)")
                 continue
 
@@ -20,7 +20,8 @@ def read_old_bank_accounts(file_path):
                 name = clean_line[6:26]  # 20 characters
                 status = clean_line[27]
                 balance_str = clean_line[29:37]  # 8 characters
-                transactions_str = clean_line[38:42]  # 4 characters
+                transactions_str = clean_line[38:42]  # 4 characters\
+                plan = clean_line[43:45]
 
                 # Validate account number format (5 digits)
                 if not account_number.isdigit():
@@ -45,6 +46,11 @@ def read_old_bank_accounts(file_path):
                     print(f"ERROR: Fatal error - Line {line_num}: Invalid transaction count format")
                     continue
 
+                # Validate plan
+                if plan not in ('SP', 'NP'):
+                    print(f"ERROR: Fatal error - Line {line_num}: Invalid plan '{plan}'")
+                    continue
+
                 # Convert numerical values
                 balance = float(balance_str)
                 transactions = int(transactions_str)
@@ -62,7 +68,8 @@ def read_old_bank_accounts(file_path):
                     'name': name.strip(),
                     'status': status,
                     'balance': balance,
-                    'total_transactions': transactions
+                    'total_transactions': transactions,
+                    'plan': plan
                 })
 
             except Exception as e:

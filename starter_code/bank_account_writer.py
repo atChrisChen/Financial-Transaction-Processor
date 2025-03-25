@@ -24,13 +24,18 @@ def write_new_current_accounts(accounts, file_path):
                 raise ValueError(f"Invalid balance type: {type(acc['balance'])}")
             if acc['balance'] > 99999.99 or acc['balance'] < 0:
                 raise ValueError(f"Balance out of range: {acc['balance']}")
+            
+            # Validate plan
+            if acc['plan'] not in ('NP', 'SP'):
+                raise ValueError(f"Invalid plan: {acc['plan']}")
 
             # Format fields
             acc_num = acc['account_number'].zfill(5)
             name = acc['name'].ljust(20)[:20]
             balance = f"{acc['balance']:08.2f}"
+            plan = acc['plan']
 
-            file.write(f"{acc_num} {name} {acc['status']} {balance}\n")
+            file.write(f"{acc_num} {name} {acc['status']} {balance} {plan}\n")
         
         # Add END_OF_FILE marker
         file.write("00000 END_OF_FILE          A 00000.00\n")

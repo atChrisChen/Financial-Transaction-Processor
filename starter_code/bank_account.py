@@ -33,7 +33,7 @@ class BankAccount:
 
     def apply_fee(self):
         # Applies a transaction fee based on account type).
-        if self.plan == 'S':
+        if self.plan == 'SP':
             fee = 0.05
         else:
             fee = 0.10
