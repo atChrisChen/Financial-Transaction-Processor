@@ -34,6 +34,8 @@ class TransactionManager:
             return True
         elif transaction.transaction_code == "01":
             return self.withdraw(account, transaction.amount)
+        elif transaction.transaction_code == "03":
+            return self.paybill(account, transaction.amount)
         elif transaction.transaction_code == "04":
             return self.deposit(account, transaction.amount)
         else:
@@ -51,7 +53,16 @@ class TransactionManager:
         else:
             print("Withdrawal fail.")
             return False
-
+        
+    def paybill(self, account: dict, amount: float) -> bool:
+        if account['status'] == 'A' and account['balance'] >= amount:
+            account['balance'] -= amount
+            account['total_transactions'] += 1
+            print("Paybill successful.")
+            return True
+        print("Paybill failed.")
+        return False
+    
     def deposit(self, account: dict, amount: float) -> bool:
         if account['status'] == 'A':
             account['balance'] += amount
