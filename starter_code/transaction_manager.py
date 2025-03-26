@@ -105,7 +105,7 @@ class TransactionManager:
                 account["name"] == account_to_disable.holder_name):
                 current_accounts[index].status = "D"
                 print("Account disabling successful")
-                write_new_current_accounts(current_accounts)
+                write_new_current_accounts(current_accounts, "OldMasterBankAccounts.txt")
                 return True
         print("Bank account not found")
         return False
