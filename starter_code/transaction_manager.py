@@ -80,29 +80,29 @@ class TransactionManager:
         return False
     
     def create(self, account: BankAccount):
-        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        current_accounts = read_old_bank_accounts("OldMasterBankAccounts.txt")
         current_accounts.append(account)
-        write_new_current_accounts(current_accounts)
+        write_new_current_accounts(current_accounts, "OldMasterBankAccounts.txt")
         print("Account creation successful")
         account.transaction_count += 1
 
     def delete(self, account_to_delete: BankAccount) -> bool:
-        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        current_accounts = read_old_bank_accounts("OldMasterBankAccounts.txt")
         for index, account in enumerate(current_accounts):
-            if (account.account_number == account_to_delete.account_number and
-                account.holder_name == account_to_delete.holder_name):
+            if (account["account_number"] == account_to_delete.account_number and
+                account["name"] == account_to_delete.holder_name):
                 del current_accounts[index]
                 print("Account deletion successful")
-                write_new_current_accounts(current_accounts)
+                write_new_current_accounts(current_accounts, "OldMasterBankAccounts.txt")
                 return True
         print("Bank account not found")
         return False
 
     def disable(self, account_to_disable: BankAccount) -> bool:
-        current_accounts = read_old_bank_accounts("OldMasterBankAccount.txt")
+        current_accounts = read_old_bank_accounts("OldMasterBankAccounts.txt")
         for index, account in enumerate(current_accounts):
-            if (account.account_number == account_to_disable.account_number and
-                account.holder_name == account_to_disable.holder_name):
+            if (account["account_number"] == account_to_disable.account_number and
+                account["name"] == account_to_disable.holder_name):
                 current_accounts[index].status = "D"
                 print("Account disabling successful")
                 write_new_current_accounts(current_accounts)
