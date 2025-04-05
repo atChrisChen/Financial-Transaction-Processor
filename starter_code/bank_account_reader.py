@@ -11,7 +11,7 @@ def read_old_bank_accounts(file_path):
             
             # Validate line length
             if len(clean_line) != 45:
-                print(f"ERROR: Fatal error - Line {line_num}: Invalid length ({len(clean_line)} chars)")
+                print(f"ERROR: Fatal error - Line {line_num}: Invalid length ({len(clean_line)} chars, expected 45)")
                 continue
 
             try:

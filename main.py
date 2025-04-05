@@ -11,7 +11,7 @@ def main():
     accounts = []
     for acc in accounts_dict: 
         
-        print("the type for balance is: " , type(acc["balance"]))
+        # print("the type for balance is: " , type(acc["balance"]))
         bank_account = BankAccount(
             account_number = acc["account_number"], 
             holder_name = acc["name"], 
@@ -26,6 +26,7 @@ def main():
     for acc in accounts:
         print(acc)
 
+    # Handles transaction processing with bank accounts
     tm = TransactionManager()
 
     # Read transactions. Returns a list of transactions holding: (transaction code, account holder, account number, amount and misc)

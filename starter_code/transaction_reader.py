@@ -9,6 +9,10 @@ def read_transactions(file_path):
     with open(file_path, 'r') as file:
         for line_num, line in enumerate(file, 1):
             clean_line = line.rstrip('\n')
+            print(f"The current clean_line is: {clean_line} \n")
+            if clean_line.startswith("00"):
+                continue
+            
             try:
                 transaction_code = clean_line[:2]
                 account_holder = clean_line[3:23].strip() 

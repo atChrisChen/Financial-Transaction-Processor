@@ -1,9 +1,2 @@
 01 John Doe            00001 00050.00 00
-04 Jane Smith          00002 00200.00 00
-02 John Doe            00001 00020.00 00002
-03 Rich Guy            00004 00500.00 01
-05 New Customer        00011 01000.00 00
-06 John Poor           00003 00000.00 00
-07 Disabled Account    00007 00000.00 00
-08 High Transactions   00006 00000.00 00
 00                     

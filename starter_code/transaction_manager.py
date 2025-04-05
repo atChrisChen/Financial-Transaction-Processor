@@ -132,5 +132,6 @@ class TransactionManager:
             bank_accounts (list): A list of BankAccount objects representing the current accounts.
         """
         for transaction in transactions:
+            # Conduct transaction process. If false, display error. 
             if not self.process_transaction(transaction, bank_accounts):
                 print(f"Transaction code: {transaction.transaction_code} failed for account number: {transaction.account_number}.\n")
