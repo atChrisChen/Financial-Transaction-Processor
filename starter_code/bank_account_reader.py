@@ -33,13 +33,14 @@ def read_old_bank_accounts(file_path):
                     print(f"ERROR: Fatal error - Line {line_num}: Invalid status '{status}'")
                     continue
 
-                # Validate balance format (XXXXX.XX)
+                # Validate balance format (XXXXX.XX)   
                 if (len(balance_str) != 8 or 
                     balance_str[5] != '.' or 
                     not balance_str[:5].isdigit() or 
                     not balance_str[6:].isdigit()):
                     print(f"ERROR: Fatal error - Line {line_num}: Invalid balance format")
                     continue
+                
 
                 # Validate transaction count format
                 if not transactions_str.isdigit():

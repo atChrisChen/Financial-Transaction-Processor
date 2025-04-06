@@ -18,7 +18,7 @@ def main():
             status = acc["status"], 
             balance = acc["balance"], 
             transaction_count = acc["total_transactions"], 
-            plan = "SP", # Files need to be updated to include a plan in them. For now will default to student
+            plan = acc["plan"], # Files need to be updated to include a plan in them. For now will default to student
         )
         accounts.append(bank_account)
     

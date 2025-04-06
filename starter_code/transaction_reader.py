@@ -11,6 +11,7 @@ def read_transactions(file_path):
             clean_line = line.rstrip('\n')
             print(f"The current clean_line is: {clean_line} \n")
             if clean_line.startswith("00"):
+                print(f"Reached end of transaction file")
                 continue
             
             try:
