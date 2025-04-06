@@ -69,8 +69,8 @@ def test_process_transaction():
         
         # Transaction codes.
         ("Test 6: Transaction '00' End of session", Transaction("123", "00"), [BankAccount("123")], True),
-        ("Test 7: Transaction '01' Withdraw", Transaction("123", "01", 50), [BankAccount("123")], True),
-        ("Test 8: Transaction '03' Paybill", Transaction("123", "03", 30), [BankAccount("123")], True),
+        ("Test 7: Transaction '01' Withdraw", Transaction("123", "01", 100), [BankAccount("123")], True),
+        ("Test 8: Transaction '03' Paybill", Transaction("123", "03", 100), [BankAccount("123")], True),
         ("Test 9: Transaction '04' Deposit", Transaction("123", "04", 100), [BankAccount("123")], True),
         ("Test 10: Transaction '05' Create", Transaction("123", "05"), [BankAccount("123")], True),
         ("Test 11: Transaction '06' Delete", Transaction("123", "06"), [BankAccount("123")], True),
