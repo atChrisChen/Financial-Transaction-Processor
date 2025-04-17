@@ -2,10 +2,10 @@
 
 # Simpulates a single day's banking backend processing
 
-SESSIONS_DIR="./Phase6_Simulation_Script/sessions"
-MERGED_FILE="./MergedBankAccountTransaction.txt"
-BACKEND_INPUT="./OldMasterBankAccounts.txt"
-BACKEND_OUTPUT="CurrentBankAccounts.txt"
+SESSIONS_DIR="./sessions"
+MERGED_FILE="../MergedBankAccountTransaction.txt"
+BACKEND_INPUT="../OldMasterBankAccounts.txt"
+BACKEND_OUTPUT="../CurrentBankAccounts.txt"
 
 echo "Merging session files from: $SESSIONS_DIR"
 
