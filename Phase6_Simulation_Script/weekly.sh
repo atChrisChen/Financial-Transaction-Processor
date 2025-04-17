@@ -1,5 +1,4 @@
 SESSIONS_DIR="./sessions"
-DAYS_DIR="./days"
 ROOT_DIR="../"
 DAILY_SCRIPT="./daily.sh"
 
@@ -19,17 +18,12 @@ echo "Starting weekly simulation..."
 for day in {1..7}; do
     echo -e "\n Running Day $day..."
 
-    DAY_SESSIONS_DIR="$DAYS_DIR/day$day"
+    DAY_SESSIONS_DIR="$SESSIONS_DIR/day$day"
 
     if [ ! -d "$DAY_SESSIONS_DIR" ]; then
         echo "ERROR: $DAY_SESSIONS_DIR does not exist. Skipping day $day."
         continue
     fi
-
-    # Clear out and copy the day's session files
-    echo "Preparing session files for Day $day"
-    rm -f "$SESSIONS_DIR"/*.txt
-    cp "$DAY_SESSIONS_DIR"/*.txt "$SESSIONS_DIR/"
 
     # Replace OldMasterBankAccounts.txt with current version
     cp "$CURRENT_MASTER" "$ROOT_DIR/OldMasterBankAccounts.txt"
