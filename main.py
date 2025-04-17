@@ -4,6 +4,16 @@ from starter_code.transaction_reader import read_transactions
 from starter_code.bank_account import BankAccount
 
 def main(): 
+    if len(sys.argv) != 4: 
+        print("Usage: python3 main.py <OldMasterBankAccounts> <MergedTransactionFile> <OutputBankAccountsFile>")
+        print("Requires these input")
+        sys.exit(1)
+    
+    # This needs to get incorporated into the rest of the program still. Should replace a lot of the dummy accounts we tested with before
+    old_accounts_file = sys.argv[1]
+    merged_transactions_file = sys.argv[2]
+    output_file = sys.argv[3]
+    
     # Load Bank Accounts. Returns a list of accounts holding: (account number, account holder, status, current balance and # of transactions)
     accounts_dict = read_old_bank_accounts("OldMasterBankAccounts.txt")
     # Apparantly should not change the bank_account_reader starter code. 
